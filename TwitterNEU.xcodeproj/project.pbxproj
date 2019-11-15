@@ -21,6 +21,14 @@
 		7569630E237523BB00FD294E /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7569630D237523BB00FD294E /* UserProfileViewController.swift */; };
 		75696310237529C100FD294E /* TweetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7569630F237529C100FD294E /* TweetViewController.swift */; };
 		7569631223752E1C00FD294E /* MyTweetsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7569631123752E1C00FD294E /* MyTweetsTableViewController.swift */; };
+		759C33AA237E47A500827391 /* FollowUnfollow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 759C33A9237E47A500827391 /* FollowUnfollow.storyboard */; };
+		759C33AC237E47FE00827391 /* FollowUnfollowTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759C33AB237E47FE00827391 /* FollowUnfollowTableViewController.swift */; };
+		759C33AE237E4B5000827391 /* UserClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759C33AD237E4B5000827391 /* UserClass.swift */; };
+		759C33B1237E4E0200827391 /* FollowSpecificUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 759C33B0237E4E0200827391 /* FollowSpecificUser.storyboard */; };
+		759C33B3237E4E3D00827391 /* FollowMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759C33B2237E4E3D00827391 /* FollowMeViewController.swift */; };
+		759C33B6237E569200827391 /* DashboardStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 759C33B5237E569200827391 /* DashboardStoryboard.storyboard */; };
+		759C33BC237E59FF00827391 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759C33BB237E59FF00827391 /* Tweet.swift */; };
+		759C33BE237E5DA400827391 /* DashboardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759C33BD237E5DA400827391 /* DashboardTableViewController.swift */; };
 		95E9BA99667ED85D027673D7 /* Pods_TwitterNEU.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 168828046D9F532826035DC1 /* Pods_TwitterNEU.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +51,14 @@
 		7569630D237523BB00FD294E /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		7569630F237529C100FD294E /* TweetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetViewController.swift; sourceTree = "<group>"; };
 		7569631123752E1C00FD294E /* MyTweetsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTweetsTableViewController.swift; sourceTree = "<group>"; };
+		759C33A9237E47A500827391 /* FollowUnfollow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FollowUnfollow.storyboard; sourceTree = "<group>"; };
+		759C33AB237E47FE00827391 /* FollowUnfollowTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowUnfollowTableViewController.swift; sourceTree = "<group>"; };
+		759C33AD237E4B5000827391 /* UserClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserClass.swift; sourceTree = "<group>"; };
+		759C33B0237E4E0200827391 /* FollowSpecificUser.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FollowSpecificUser.storyboard; sourceTree = "<group>"; };
+		759C33B2237E4E3D00827391 /* FollowMeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowMeViewController.swift; sourceTree = "<group>"; };
+		759C33B5237E569200827391 /* DashboardStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DashboardStoryboard.storyboard; sourceTree = "<group>"; };
+		759C33BB237E59FF00827391 /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
+		759C33BD237E5DA400827391 /* DashboardTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardTableViewController.swift; sourceTree = "<group>"; };
 		8DE26633A012DFB44178006C /* Pods-TwitterNEU.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterNEU.release.xcconfig"; path = "Target Support Files/Pods-TwitterNEU/Pods-TwitterNEU.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,6 +95,9 @@
 		756962EA23750E4100FD294E /* TwitterNEU */ = {
 			isa = PBXGroup;
 			children = (
+				759C33B4237E566500827391 /* Dashboard */,
+				759C33AF237E4DDA00827391 /* FollowSpecificUser */,
+				759C33A8237E477000827391 /* FollowUnfollow */,
 				7553CD35237D1D6900672E41 /* GoogleService-Info.plist */,
 				7569630223750EAC00FD294E /* Utils */,
 				7569630123750E6F00FD294E /* Controller */,
@@ -96,6 +115,8 @@
 		756962FF23750E4E00FD294E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				759C33AD237E4B5000827391 /* UserClass.swift */,
+				759C33BB237E59FF00827391 /* Tweet.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -137,6 +158,33 @@
 				8DE26633A012DFB44178006C /* Pods-TwitterNEU.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		759C33A8237E477000827391 /* FollowUnfollow */ = {
+			isa = PBXGroup;
+			children = (
+				759C33A9237E47A500827391 /* FollowUnfollow.storyboard */,
+				759C33AB237E47FE00827391 /* FollowUnfollowTableViewController.swift */,
+			);
+			path = FollowUnfollow;
+			sourceTree = "<group>";
+		};
+		759C33AF237E4DDA00827391 /* FollowSpecificUser */ = {
+			isa = PBXGroup;
+			children = (
+				759C33B0237E4E0200827391 /* FollowSpecificUser.storyboard */,
+				759C33B2237E4E3D00827391 /* FollowMeViewController.swift */,
+			);
+			path = FollowSpecificUser;
+			sourceTree = "<group>";
+		};
+		759C33B4237E566500827391 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				759C33B5237E569200827391 /* DashboardStoryboard.storyboard */,
+				759C33BD237E5DA400827391 /* DashboardTableViewController.swift */,
+			);
+			path = Dashboard;
 			sourceTree = "<group>";
 		};
 		AC655D258122C5E2E96BF7FC /* Frameworks */ = {
@@ -207,9 +255,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				759C33B1237E4E0200827391 /* FollowSpecificUser.storyboard in Resources */,
 				756962F823750E4200FD294E /* LaunchScreen.storyboard in Resources */,
 				7553CD36237D1D6900672E41 /* GoogleService-Info.plist in Resources */,
+				759C33B6237E569200827391 /* DashboardStoryboard.storyboard in Resources */,
 				756962F523750E4200FD294E /* Assets.xcassets in Resources */,
+				759C33AA237E47A500827391 /* FollowUnfollow.storyboard in Resources */,
 				756962F323750E4100FD294E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,15 +315,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				7569630423750EDA00FD294E /* StringExtension.swift in Sources */,
+				759C33AC237E47FE00827391 /* FollowUnfollowTableViewController.swift in Sources */,
 				7569630C2375165500FD294E /* DashboardViewController.swift in Sources */,
 				75696310237529C100FD294E /* TweetViewController.swift in Sources */,
 				7569631223752E1C00FD294E /* MyTweetsTableViewController.swift in Sources */,
 				7569630E237523BB00FD294E /* UserProfileViewController.swift in Sources */,
+				759C33BC237E59FF00827391 /* Tweet.swift in Sources */,
 				756962F023750E4100FD294E /* LoginViewController.swift in Sources */,
 				756962EC23750E4100FD294E /* AppDelegate.swift in Sources */,
 				7569630A2375133800FD294E /* RegisterViewController.swift in Sources */,
+				759C33BE237E5DA400827391 /* DashboardTableViewController.swift in Sources */,
 				756963082375127200FD294E /* KeychainService.swift in Sources */,
+				759C33B3237E4E3D00827391 /* FollowMeViewController.swift in Sources */,
 				756962EE23750E4100FD294E /* SceneDelegate.swift in Sources */,
+				759C33AE237E4B5000827391 /* UserClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

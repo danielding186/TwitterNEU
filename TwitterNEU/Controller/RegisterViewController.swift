@@ -94,11 +94,9 @@ class RegisterViewController: UIViewController {
         ref.child("users").child(uid).setValue(userDetail)
         //ref.child("posts").child(uid).setValue(post)
         
-
-        var date = NSDate()
         guard let key = ref.child("following").child(uid).childByAutoId().key else { return}
         let userVal =   ["uid": uid,
-                        "dateTime": date.timeIntervalSince1970
+                         "dateTime": ServerValue.timestamp()
                         ] as [String : Any]
 
         let childUpdates = ["/following/\(uid)/\(key)/": userVal,

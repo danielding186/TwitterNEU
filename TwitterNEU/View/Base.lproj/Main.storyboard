@@ -51,14 +51,6 @@
                                     <action selector="gotoRegister:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jcl-I5-zAL"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oIs-IH-nid">
-                                <rect key="frame" x="147" y="707" width="115" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Forgot Password"/>
-                                <connections>
-                                    <action selector="forgotPassword:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4LI-cA-NE4"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -173,34 +165,25 @@
             </objects>
             <point key="canvasLocation" x="2030" y="992"/>
         </scene>
-        <!--Table View Controller-->
-        <scene sceneID="oPZ-pD-eRg">
+        <!--DashboardStoryboard-->
+        <scene sceneID="cJo-Ta-THZ">
             <objects>
-                <tableViewController id="d20-Iu-Rdw" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Xhi-2S-eqN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="o9L-dk-2iv">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="o9L-dk-2iv" id="ydd-XM-5uF">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="d20-Iu-Rdw" id="g3F-du-gAF"/>
-                            <outlet property="delegate" destination="d20-Iu-Rdw" id="v88-oH-bpa"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="J9O-B9-d2B"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CXL-lm-qTZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="DashboardStoryboard" id="kth-0u-HcG" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="g74-e8-iEL"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GCP-fN-pJH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3207" y="987"/>
+            <point key="canvasLocation" x="1838" y="-398"/>
+        </scene>
+        <!--FollowUnfollow-->
+        <scene sceneID="Dri-eu-ubZ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="FollowUnfollow" id="Lkx-Kz-wJ5" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="iV0-Vn-02H"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qdF-hD-hYU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1349" y="-311"/>
         </scene>
         <!--Dashboard-->
         <scene sceneID="rI0-Iz-QGY">
@@ -242,6 +225,22 @@
                                     <action selector="readMyTweets:" destination="qpO-dE-YgU" eventType="touchUpInside" id="rkT-sh-Dtv"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yMs-Iz-vTy">
+                                <rect key="frame" x="136" y="143" width="126" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Fopllow Unfopllow"/>
+                                <connections>
+                                    <segue destination="Lkx-Kz-wJ5" kind="show" id="OQ1-0C-jWQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fwc-WR-nDT">
+                                <rect key="frame" x="164" y="213" width="75" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Dashboard"/>
+                                <connections>
+                                    <segue destination="kth-0u-HcG" kind="show" id="Y0K-BC-QOn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="9BW-7f-6Pf"/>
@@ -251,12 +250,11 @@
                         <segue destination="stM-yQ-XNv" kind="show" identifier="userProfileSegue" id="h6t-CF-Zr1"/>
                         <segue destination="SQw-6n-h0i" kind="show" identifier="tweetSegue" id="1eR-8i-cdk"/>
                         <segue destination="pmj-5w-IEM" kind="show" identifier="readMyTweetsSegue" id="gzp-JV-hG8"/>
-                        <segue destination="d20-Iu-Rdw" kind="show" identifier="followUsersSegue" id="R7y-ff-hsM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CC9-l4-kiO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1677" y="156"/>
+            <point key="canvasLocation" x="1676.8115942028987" y="155.35714285714286"/>
         </scene>
         <!--Tweet-->
         <scene sceneID="auy-ny-Tos">
