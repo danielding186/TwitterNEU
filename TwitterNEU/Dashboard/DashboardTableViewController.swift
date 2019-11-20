@@ -51,10 +51,15 @@ class DashboardTableViewController: UITableViewController {
                                     let body: String = eachTweet.value["body"]! as! String
                                     let uidTweeter : String = eachTweet.value["uid"]! as! String
                                     
+                                    let contains = self.listTweets.contains { (tweet) -> Bool in
+                                        return tweet.key == eachTweet.key
+                                    }
                                     
-                                    self.listTweets.append(Tweet(author: author, body: body, uid: uidTweeter, key: eachTweet.key    ))
-                                    self.table.reloadData()
-                                    
+                                    // Add tweet in the list only of the tweet is not in the list
+                                    if !contains {
+                                        self.listTweets.append(Tweet(author: author, body: body, uid: uidTweeter, key: eachTweet.key    ))
+                                        self.table.reloadData()
+                                    }
                                 }
                             }
                         })
