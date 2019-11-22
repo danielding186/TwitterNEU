@@ -11,4 +11,6 @@ target 'TwitterNEU' do
   pod 'Firebase/Analytics'
   pod "FirebaseAuth"
   pod "FirebaseDatabase"
+  pod "Alamofire"
+  pod "SwiftyJSON"
 end
