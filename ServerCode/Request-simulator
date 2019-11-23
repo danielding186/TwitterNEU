@@ -1,11 +1,31 @@
+1 AddTweet
 curl -H "Accept: application/json" -H "Content-type: application/json" -X POST -d '{"uid":"sfd", "body":"sdfs", "author":"111"}' https://us-central1-neutwitter-9157a.cloudfunctions.net/addTweet
 
-curl -H "Accept: application/json" -H "Content-type: application/json" -X POST -d '{"uid":"sfd", "follower":"111", "dateTime":"112"}' https://us-central1-neutwitter-9157a.cloudfunctions.net/follow
+2 MyTweet
+https://us-central1-neutwitter-9157a.cloudfunctions.net/myTweets?uid=sfd
+{
+	"-LuHjYeORg6zV8O4pYJ_": {
+		"author": "111",
+		"body": "sdfs"
+	}
+}
 
+3 RelationShip
+https://us-central1-neutwitter-9157a.cloudfunctions.net/relationship?uid=sfd&followerId=1
+{
+	"followed": 1,
+	"relationID": "-LuLT67r5Yb492nswcMx"
+}
+
+4 Follow user
+curl -H "Accept: application/json" -H "Content-type: application/json" -X POST -d '{"uid":"sfd", "followerId":"111"}' https://us-central1-neutwitter-9157a.cloudfunctions.net/follow
+{"relationID":"-LuLT67r5Yb492nswcMx"}
+
+5 Unfollow User
 curl -H "Accept: application/json" -H "Content-type: application/json" -X POST -d '{"uid":"sfd", "relationID":"-LuHkFoUZpwqG7YbXLoH"}' https://us-central1-neutwitter-9157a.cloudfunctions.net/unfollow
 
+6 List all users
 https://us-central1-neutwitter-9157a.cloudfunctions.net/users
 
-https://us-central1-neutwitter-9157a.cloudfunctions.net/myTweets?uid=sfd
 
-https://us-central1-neutwitter-9157a.cloudfunctions.net/relationship?uid=sfd&followerId=1
+

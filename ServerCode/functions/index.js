@@ -64,8 +64,8 @@ exports.followers = functions.https.onRequest((req, res) => {
 
 
 exports.follow = functions.https.onRequest((req, res) => {
-  const {uid, follower, dateTime} = req.body;
-  const relation = {'uid':follower, 'dateTime':dateTime};
+  const {uid, followerId} = req.body;
+  const relation = {'uid':followerId, 'dateTime':admin.database.ServerValue.TIMESTAMP};
   var ref = admin.database().ref('following/' + uid);
   var followingRef = ref.push();
   followingRef.set(relation);
