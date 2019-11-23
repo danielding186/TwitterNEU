@@ -27,20 +27,14 @@ class TweetViewController: UIViewController , UITextViewDelegate{
     
     @IBAction func tweet(_ sender: Any) {
         // create Post
-        let ref = Database.database().reference()
         guard let uid = Auth.auth().currentUser?.uid else {return}
         guard let fullName = Auth.auth().currentUser?.displayName else {return}
      
-               
-        guard let key = ref.child("tweets").child(uid).childByAutoId().key else { return }
-        let post = ["uid": uid,
-                    "author": fullName,
-                    "body": txtTweet.text] as [String : Any]
-             
-               
-        let childUpdates = ["/tweets/\(uid)/\(key)": post]
-        ref.updateChildValues(childUpdates)
-        self.navigationController?.popViewController(animated: true)
+        NEUTwitterAPI.shared().postTweet(uid: uid, author: fullName, body: txtTweet.text) { (result:Bool) in
+            if (result) {
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
     }
     
    func textViewDidBeginEditing (_ textView: UITextView) {

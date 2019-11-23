@@ -20,9 +20,11 @@ exports.addTweet = functions.https.onRequest((req, res) => {
   const {body, uid, author} = req.body;
   const post = {'body': body, 'author':author};
 
+  console.log('addTweet::' + body + 'uid=' + uid + 'author=' + author)
+
   admin.database().ref('/tweets/' + uid).push(post);
 
-  res.sendStatus(200);
+  res.status(200).json({'success':1});
 });
 
 exports.myTweets = functions.https.onRequest((req, res) => {
@@ -79,6 +81,6 @@ exports.unfollow = functions.https.onRequest((req, res) => {
   var relationRef = admin.database().ref('following/' + uid + '/' + relationID);
   relationRef.remove();
 
-  res.sendStatus(200);
+  res.status(200).json({'success':1});
 });
 

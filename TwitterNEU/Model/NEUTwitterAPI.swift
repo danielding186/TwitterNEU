@@ -54,9 +54,7 @@ class NEUTwitterAPI: NSObject {
             var tweets:[Tweet] = []
             if response.result.isSuccess {
                 let data:JSON = JSON(response.result.value!)
-                
-                
-                
+
                 for (key, item) in data {
                     let tweet:Tweet? = Tweet(
                         author: item["author"].rawString()!,
@@ -73,6 +71,24 @@ class NEUTwitterAPI: NSObject {
             }
         }
     }
+    
+    func postTweet(uid: String, author:String, body: String, completion: @escaping (Bool)->Void) {
+        let url: String = NEUTwitterAPI.URL + "/addTweet"
+        let params: [String: Any] = [
+            "uid": uid,
+            "author": author,
+            "body": body
+        ]
+        Alamofire.request(url, method: HTTPMethod.post, parameters: params, encoding: JSONEncoding.default, headers: nil).responseJSON {
+            response in
+            if response.result.isSuccess {
+                completion(true)
+            } else {
+                completion(false)
+            }
+        }
+    }
+    
     
     func follow(uid: String, follower: String, completion: @escaping (String?)->Void) {
         let url: String = NEUTwitterAPI.URL + "/follow"
