@@ -13,7 +13,6 @@ import FirebaseAuth
 class FollowMeViewController: UIViewController {
     
     
-
     @IBOutlet weak var followButton: UIButton!
     
     @IBOutlet weak var imageUser: UIImageView!
@@ -22,80 +21,89 @@ class FollowMeViewController: UIViewController {
     
     @IBOutlet weak var lblEMail: UILabel!
     var loggedInuser : User?
-        var ref : DatabaseReference?
-        var refUser : DatabaseReference?
-        var userToFollow : UserClass?
-        override func viewDidLoad() {
-            super.viewDidLoad()
-            loggedInuser = Auth.auth().currentUser
-            guard let  uid = loggedInuser?.uid else {return}
-            ref = Database.database().reference().child("following").child(uid)
-            
+    var userToFollow : UserClass?
+    
+    var uid: String = ""
+    var followerId: String = ""
+    var relationShipID: String?
+    
+    override func viewDidLoad() {
+        
+        loggedInuser = Auth.auth().currentUser
+        guard let uid = loggedInuser?.uid else {return}
+        guard let followerId = userToFollow?.uid else{return}
+        self.uid = uid
+        self.followerId = followerId
+        loadUser()
+        
+    }
+    
 
-            // Do any additional setup after loading the view.
+    func loadUser(){
+        lblName.text = "Name: \(userToFollow?.fullName ?? "Name: " )"
+        lblEMail.text = "Name: \(userToFollow?.email ?? "Name: ")"
+        
+        if loggedInuser?.uid == userToFollow?.uid {
+            followButton.isEnabled = false
+            return
         }
         
-        override func viewDidAppear(_ animated: Bool) {
-            loadUser()
-        }
-        func loadUser(){
-            lblName.text = "Name: \(userToFollow?.fullName ?? "Name: " )"
-            lblEMail.text = "Name: \(userToFollow?.email ?? "Name: ")"
-            
-            if loggedInuser?.uid == userToFollow?.uid {
-                followButton.isEnabled = false
-                return
+        self.followButton.setTitle("...", for: .normal)
+        
+        NEUTwitterAPI.shared().relationship(uid: uid, followerID: followerId) { (isFollowed: Int?, realtionId: String?) in
+            if (isFollowed == 1) {
+                self.followButton.setTitle("Unfollow", for: .normal)
+                self.relationShipID = realtionId
             }
-            
-            ref?.observeSingleEvent(of: .value, with: { (snapShot) in
-                // print(snapShot)
-                if let snapDict = snapShot.value as? [String:AnyObject]{
-                    for each in snapDict as [String:AnyObject]{
-                        let uidToFollow = each.value["uid"]! as! String
-                        
-                        let dateTime = each.value["dateTime"]! as! TimeInterval
-                        print(NSDate(timeIntervalSince1970: dateTime/1000))
-                        if uidToFollow == self.userToFollow?.uid {
-                            self.followButton.titleLabel?.text = "Unfollow"
-                            self.refUser = (self.ref?.child(each.key))!
-                            return
-                        }
-                        
-                    }
-                }
-            })
+            else {
+                self.followButton.setTitle("Follow", for: .normal)
+            }
         }
-        
+    }
+    
     
     
     @IBAction func followMe(_ sender: Any) {
-     if followButton.titleLabel?.text == "Follow" {
-
-         let userVal =   ["uid": userToFollow?.uid,
-                          "dateTime": ServerValue.timestamp()
-         ] as [String : Any]
-         
-         followButton.titleLabel?.text = "Unfollow"
-         ref!.childByAutoId().setValue(userVal)
-         self.navigationController?.popViewController(animated: true)
-         
-     }else{
-         
-         refUser?.removeValue()
-         followButton.titleLabel?.text = "Follow"
-         self.navigationController?.popViewController(animated: true)
-         
-     }
+        if followButton.titleLabel?.text == "..." {
+            return
+        }
+        
+        if followButton.titleLabel?.text == "Follow" {
+            
+            NEUTwitterAPI.shared().follow(uid: uid, follower: followerId) { (realtionId: String?) in
+                self.relationShipID = realtionId
+                self.followButton.setTitle("Unfollow", for: .normal)
+            }
+            
+            self.followButton.setTitle("...", for: .normal)
+        }else{
+            
+            if self.relationShipID == nil {
+                self.followButton.setTitle("Follow", for: .normal)
+                return;
+            }
+            
+            NEUTwitterAPI.shared().unfollow(uid: uid, relationID: self.relationShipID!) { (result: Bool) in
+                if result {
+                    self.followButton.setTitle("Follow", for: .normal)
+                    self.relationShipID = nil;
+                } else {
+                     self.followButton.setTitle("Unfollow", for: .normal)
+                }
+            }
+            
+            self.followButton.setTitle("...", for: .normal)
+        }
     }
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

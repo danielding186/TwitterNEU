@@ -35,7 +35,7 @@ exports.myTweets = functions.https.onRequest((req, res) => {
 
 exports.relationship = functions.https.onRequest((req, res) => {
   const {uid, followerId} = req.query;
-  console.log('relationship:' + uid);
+  console.log('relationship:' + uid + ' ' + followerId);
 
   var ref = admin.database().ref('/following/' + uid);
   ref.orderByChild("uid").equalTo(followerId).once("value", (snapshot) => {
