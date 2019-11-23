@@ -47,6 +47,33 @@ class NEUTwitterAPI: NSObject {
         }
     }
     
+    func getMyTweets(uid: String, completion:  @escaping ([Tweet]) -> Void) {
+        let url:String = NEUTwitterAPI.URL + "/myTweets?uid=\(uid)"
+        Alamofire.request(url).responseJSON {
+            response in
+            var tweets:[Tweet] = []
+            if response.result.isSuccess {
+                let data:JSON = JSON(response.result.value!)
+                
+                
+                
+                for (key, item) in data {
+                    let tweet:Tweet? = Tweet(
+                        author: item["author"].rawString()!,
+                        body: item["body"].rawString()!,
+                        uid: uid, key: key)
+                    if tweet != nil {
+                        tweets.append(tweet!)
+                    }
+                }
+                completion(tweets)
+            }
+            else {
+                completion(tweets)
+            }
+        }
+    }
+    
     func follow(uid: String, follower: String, completion: @escaping (String?)->Void) {
         let url: String = NEUTwitterAPI.URL + "/follow"
         let params: [String: Any] = [
@@ -81,17 +108,7 @@ class NEUTwitterAPI: NSObject {
     }
     
     func relationship(uid: String, followerID: String, completion: @escaping (Int?, String?)->Void) {
-        var url: String = NEUTwitterAPI.URL + "/relationship?"
-        let params: [String: Any] = [
-            "uid": uid,
-            "followerId": followerID,
-        ]
-        for (key, value) in params {
-            print (key, value)
-            url.append("\(key)=\(value)&")
-        }
-        url.remove(at: url.index(before: url.endIndex))
-        
+        let url: String = NEUTwitterAPI.URL + "/relationship?uid=\(uid)&followerId=\(followerID)"
         Alamofire.request(url).responseJSON {
             response in
             if response.result.isSuccess {
@@ -102,5 +119,6 @@ class NEUTwitterAPI: NSObject {
             }
         }
     }
+    
     
 }

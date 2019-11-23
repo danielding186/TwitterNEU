@@ -17,34 +17,21 @@ class MyTweetsTableViewController: UITableViewController {
     @IBOutlet var table: UITableView!
     
     var user : User?
-    var ref : DatabaseReference?
     override func viewDidLoad() {
         super.viewDidLoad()
         user = Auth.auth().currentUser
-        
-        guard let  uid = user?.uid else {return}
-        
-        ref = Database.database().reference().child("tweets").child(uid)
-        
         loadPosts()
     }
     
     
     func loadPosts(){
-        ref?.observeSingleEvent(of: .value, with: { (snapShot) in
-            
-           // print(snapShot)
-            if let snapDict = snapShot.value as? [String:AnyObject]{
-
-                for each in snapDict as [String:AnyObject]{
-                    let tweet = each.value["body"] as! String
-                    print(tweet)
-                    self.arr.append(tweet)
-                }
-                self.table.reloadData()
-                //self.getPosts()
+        guard let  uid = user?.uid else {return}
+        NEUTwitterAPI.shared().getMyTweets(uid: uid) { (tweets:[Tweet]) in
+            for tweet in tweets {
+                self.arr.append(tweet.body)
             }
-        })
+            self.table.reloadData()
+        }
     }
 
 

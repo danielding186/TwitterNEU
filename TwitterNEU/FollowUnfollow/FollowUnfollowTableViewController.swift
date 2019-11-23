@@ -28,7 +28,7 @@ class FollowUnfollowTableViewController: UITableViewController {
     
     func loadUsers(){
         
-        NEUTwitterAPI .shared().getUsers { (users:[UserClass]?) in
+        NEUTwitterAPI.shared().getUsers { (users:[UserClass]?) in
             self.listUsers = users!
             self.table.reloadData()
         }
