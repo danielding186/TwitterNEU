@@ -3,3 +3,9 @@ curl -H "Accept: application/json" -H "Content-type: application/json" -X POST -
 curl -H "Accept: application/json" -H "Content-type: application/json" -X POST -d '{"uid":"sfd", "follower":"111", "dateTime":"112"}' https://us-central1-neutwitter-9157a.cloudfunctions.net/follow
 
 curl -H "Accept: application/json" -H "Content-type: application/json" -X POST -d '{"uid":"sfd", "relationID":"-LuHkFoUZpwqG7YbXLoH"}' https://us-central1-neutwitter-9157a.cloudfunctions.net/unfollow
+
+https://us-central1-neutwitter-9157a.cloudfunctions.net/users
+
+https://us-central1-neutwitter-9157a.cloudfunctions.net/myTweets?uid=sfd
+
+https://us-central1-neutwitter-9157a.cloudfunctions.net/relationship?uid=sfd&followerId=1
